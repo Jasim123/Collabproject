@@ -8,6 +8,7 @@ public interface BlogDao
 	void addBlog(Blog blog);
 	List<Blog> viewBlogs();
 	void updateBlog(Blog blog);
-	void deleteBlog(int id);
+	void deleteBlog(int Bid);
+	public String getBlogByBlogId(int id);
 
 }

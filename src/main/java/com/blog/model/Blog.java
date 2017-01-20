@@ -1,25 +1,35 @@
 package com.blog.model;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
+import org.springframework.stereotype.Component;
 
 @Entity
+@Table( name = "BlogDetails",schema = "bloguser")
+
+
 public class Blog {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE)
-	private int blog_id;
+	private int bid;
 	private String blogTitle;
 	private String blogDescription;
-	private String date;
+	private String cdate;
 	private String postedBy;
 	private String category;
-	public int getBlog_id() {
-		return blog_id;
+	
+	
+	public int getBid() {
+		return bid;
 	}
-	public void setBlog_id(int blog_id) {
-		this.blog_id = blog_id;
+	public void setBid(int bid) {
+		this.bid = bid;
 	}
 	public String getBlogTitle() {
 		return blogTitle;
@@ -33,11 +43,11 @@ public class Blog {
 	public void setBlogDescription(String blogDescription) {
 		this.blogDescription = blogDescription;
 	}
-	public String getDate() {
-		return date;
+	public String getCdate() {
+		return cdate;
 	}
-	public void setDate(String date) {
-		this.date = date;
+	public void setCdate(String cdate) {
+		this.cdate = cdate;
 	}
 	public String getPostedBy() {
 		return postedBy;
@@ -52,5 +62,11 @@ public class Blog {
 		this.category = category;
 	}
 	
-
+	//@Id
+	//@GeneratedValue(strategy = GenerationType.IDENTITY)
+	//@SequenceGenerator(name = "id_Sequence", sequenceName = "ID_SEQ" ,allocationSize=1)
+	
+	//@GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "id_Sequence")
+	//@Column(name = "ID")
+	
 }

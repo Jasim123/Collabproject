@@ -7,10 +7,14 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.blog.model.Blog;
 
-@Repository
+@Repository("blog1")
+@EnableTransactionManagement
+@Transactional
 public class BlogDaoImpl  implements BlogDao
 {
 	
@@ -24,7 +28,7 @@ public class BlogDaoImpl  implements BlogDao
 		Session session=sessionFactory.getCurrentSession();
 		date = new Date();
 		String data=date.toString();
-		blog.setDate(data);
+		blog.setCdate(data);
 		session.save(blog);
 		
 	}
@@ -44,7 +48,7 @@ public class BlogDaoImpl  implements BlogDao
 		Session session=sessionFactory.getCurrentSession();
 		date=new Date();
 		String data=date.toString();
-		blog.setDate(data);
+		blog.setCdate(data);
 		session.update(blog);
 		
 	}
@@ -54,6 +58,11 @@ public class BlogDaoImpl  implements BlogDao
 		Session session=sessionFactory.getCurrentSession();
 		Blog blog=(Blog)session.get(Blog.class, new Integer(id));
 		session.delete(blog);
+	}
+	
+	public String getBlogByBlogId(int id)
+	{
+		return null;
 	}
 
 }
